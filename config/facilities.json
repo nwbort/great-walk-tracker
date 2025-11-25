@@ -1,0 +1,349 @@
+{
+  "facilities": [
+    {
+      "facility_id": 2852,
+      "facility_name": "Brod Bay Campsite"
+    },
+    {
+      "facility_id": 2853,
+      "facility_name": "Iris Burn Campsite"
+    },
+    {
+      "facility_id": 2854,
+      "facility_name": "Iris Burn Hut"
+    },
+    {
+      "facility_id": 2855,
+      "facility_name": "Luxmore Hut"
+    },
+    {
+      "facility_id": 2856,
+      "facility_name": "Moturau Hut"
+    },
+    {
+      "facility_id": 2857,
+      "facility_name": "Clinton Hut"
+    },
+    {
+      "facility_id": 2858,
+      "facility_name": "Dumpling Hut"
+    },
+    {
+      "facility_id": 2859,
+      "facility_name": "Mintaro Hut"
+    },
+    {
+      "facility_id": 2860,
+      "facility_name": "Lake Mackenzie Campsite"
+    },
+    {
+      "facility_id": 2861,
+      "facility_name": "Lake Mackenzie Hut"
+    },
+    {
+      "facility_id": 2862,
+      "facility_name": "Routeburn Falls Hut"
+    },
+    {
+      "facility_id": 2863,
+      "facility_name": "Routeburn Flats Campsite"
+    },
+    {
+      "facility_id": 2864,
+      "facility_name": "Routeburn Flats Hut"
+    },
+    {
+      "facility_id": 2865,
+      "facility_name": "Akersten Bay Campsite"
+    },
+    {
+      "facility_id": 2866,
+      "facility_name": "Anapai Bay Campsite"
+    },
+    {
+      "facility_id": 2867,
+      "facility_name": "Anchorage Campsite"
+    },
+    {
+      "facility_id": 2868,
+      "facility_name": "Anchorage Hut"
+    },
+    {
+      "facility_id": 2869,
+      "facility_name": "Apple Tree Bay Campsite"
+    },
+    {
+      "facility_id": 2870,
+      "facility_name": "Awaroa Campsite"
+    },
+    {
+      "facility_id": 2871,
+      "facility_name": "Awaroa Hut"
+    },
+    {
+      "facility_id": 2872,
+      "facility_name": "Bark Bay Campsite"
+    },
+    {
+      "facility_id": 2873,
+      "facility_name": "Bark Bay Hut"
+    },
+    {
+      "facility_id": 2874,
+      "facility_name": "Coquille Bay Campsite"
+    },
+    {
+      "facility_id": 2876,
+      "facility_name": "Mosquito Bay Campsite (private boat access only)"
+    },
+    {
+      "facility_id": 2877,
+      "facility_name": "Mutton Cove Campsite"
+    },
+    {
+      "facility_id": 2878,
+      "facility_name": "Observation Beach Campsite"
+    },
+    {
+      "facility_id": 2879,
+      "facility_name": "Onetahuti Bay Campsite"
+    },
+    {
+      "facility_id": 2880,
+      "facility_name": "Te Pukatea Bay Campsite"
+    },
+    {
+      "facility_id": 2881,
+      "facility_name": "Tinline Campsite"
+    },
+    {
+      "facility_id": 2882,
+      "facility_name": "Torrent Bay Village Campsite"
+    },
+    {
+      "facility_id": 2883,
+      "facility_name": "Totaranui Great Walk Campsite"
+    },
+    {
+      "facility_id": 2884,
+      "facility_name": "Waiharakeke Bay Campsite"
+    },
+    {
+      "facility_id": 2885,
+      "facility_name": "Watering Cove Campsite"
+    },
+    {
+      "facility_id": 2886,
+      "facility_name": "Whariwharangi Bay Campsite"
+    },
+    {
+      "facility_id": 2887,
+      "facility_name": "Whariwharangi Hut"
+    },
+    {
+      "facility_id": 2888,
+      "facility_name": "Aorere Campsite"
+    },
+    {
+      "facility_id": 2889,
+      "facility_name": "Brown Campsite"
+    },
+    {
+      "facility_id": 2890,
+      "facility_name": "Brown Hut"
+    },
+    {
+      "facility_id": 2891,
+      "facility_name": "Gouland Downs Campsite"
+    },
+    {
+      "facility_id": 2892,
+      "facility_name": "Gouland Downs Hut"
+    },
+    {
+      "facility_id": 2893,
+      "facility_name": "Heaphy Campsite"
+    },
+    {
+      "facility_id": 2894,
+      "facility_name": "Heaphy Hut"
+    },
+    {
+      "facility_id": 2895,
+      "facility_name": "James Mackay Campsite"
+    },
+    {
+      "facility_id": 2896,
+      "facility_name": "James Mackay Hut"
+    },
+    {
+      "facility_id": 2897,
+      "facility_name": "Katipo Creek Shelter Campsite"
+    },
+    {
+      "facility_id": 2898,
+      "facility_name": "Perry Saddle Campsite"
+    },
+    {
+      "facility_id": 2899,
+      "facility_name": "Saxon Campsite"
+    },
+    {
+      "facility_id": 2900,
+      "facility_name": "Saxon Hut"
+    },
+    {
+      "facility_id": 2901,
+      "facility_name": "Scotts Beach Campsite"
+    },
+    {
+      "facility_id": 2902,
+      "facility_name": "Perry Saddle Hut"
+    },
+    {
+      "facility_id": 2903,
+      "facility_name": "Maori Beach Campsite"
+    },
+    {
+      "facility_id": 2904,
+      "facility_name": "North Arm Campsite"
+    },
+    {
+      "facility_id": 2905,
+      "facility_name": "North Arm Hut"
+    },
+    {
+      "facility_id": 2906,
+      "facility_name": "Port William Campsite"
+    },
+    {
+      "facility_id": 2907,
+      "facility_name": "Port William Hut"
+    },
+    {
+      "facility_id": 2908,
+      "facility_name": "Korokoro Campsite"
+    },
+    {
+      "facility_id": 2909,
+      "facility_name": "Marauiti Hut"
+    },
+    {
+      "facility_id": 2910,
+      "facility_name": "Maraunui Campsite"
+    },
+    {
+      "facility_id": 2911,
+      "facility_name": "Panekire Hut"
+    },
+    {
+      "facility_id": 2913,
+      "facility_name": "Waiharuru Campsite"
+    },
+    {
+      "facility_id": 2914,
+      "facility_name": "Waiopaoa Hut"
+    },
+    {
+      "facility_id": 2916,
+      "facility_name": "Waiharuru Hut"
+    },
+    {
+      "facility_id": 2917,
+      "facility_name": "Waiopaoa Campsite"
+    },
+    {
+      "facility_id": 2918,
+      "facility_name": "Mangatepopo Campsite"
+    },
+    {
+      "facility_id": 2919,
+      "facility_name": "Mangatepopo Hut"
+    },
+    {
+      "facility_id": 2920,
+      "facility_name": "Oturere Campsite"
+    },
+    {
+      "facility_id": 2921,
+      "facility_name": "Oturere Hut"
+    },
+    {
+      "facility_id": 2922,
+      "facility_name": "Waihohonu Campsite"
+    },
+    {
+      "facility_id": 2923,
+      "facility_name": "Waihohonu Hut"
+    },
+    {
+      "facility_id": 2924,
+      "facility_name": "Ces Clark Hut"
+    },
+    {
+      "facility_id": 2925,
+      "facility_name": "Moonlight Tops Hut"
+    },
+    {
+      "facility_id": 2926,
+      "facility_name": "Pororari Hut"
+    },
+    {
+      "facility_id": 2927,
+      "facility_name": "John Coull Campsite"
+    },
+    {
+      "facility_id": 2928,
+      "facility_name": "John Coull Hut"
+    },
+    {
+      "facility_id": 2929,
+      "facility_name": "Maharanui Campsite"
+    },
+    {
+      "facility_id": 2930,
+      "facility_name": "Mangapapa Campsite"
+    },
+    {
+      "facility_id": 2931,
+      "facility_name": "Mangapurua Campsite"
+    },
+    {
+      "facility_id": 2932,
+      "facility_name": "Mangawaiiti Campsite"
+    },
+    {
+      "facility_id": 2933,
+      "facility_name": "Ngāporo Campsite"
+    },
+    {
+      "facility_id": 2934,
+      "facility_name": "Ōhauora Campsite"
+    },
+    {
+      "facility_id": 2935,
+      "facility_name": "Ōhinepane Campsite"
+    },
+    {
+      "facility_id": 2936,
+      "facility_name": "Poukaria Campsite"
+    },
+    {
+      "facility_id": 2937,
+      "facility_name": "Tīeke Campsite"
+    },
+    {
+      "facility_id": 2938,
+      "facility_name": "Tīeke Kāinga Hut"
+    },
+    {
+      "facility_id": 2939,
+      "facility_name": "Whakahoro Bunkroom"
+    },
+    {
+      "facility_id": 2940,
+      "facility_name": "Whakahoro Campsite"
+    }
+  ],
+  "last_updated": "2025-11-25T04:11:05"
+}

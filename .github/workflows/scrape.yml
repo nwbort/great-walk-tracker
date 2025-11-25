@@ -40,7 +40,7 @@ jobs:
 
       - name: Commit and push data
         run: |
-          git add data/
+          git add data/ config/facilities.json
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
