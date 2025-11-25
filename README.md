@@ -53,7 +53,7 @@ Edit `config/walks.json` to add placeIds for each walk:
 }
 ```
 
-**Finding placeIds**: See [DISCOVER_PLACEIDS.md](DISCOVER_PLACEIDS.md) for instructions.
+**Finding placeIds**: All placeIds are already configured in `config/walks.json`.
 
 ### 2. Enable GitHub Actions
 
@@ -74,11 +74,13 @@ python scraper.py
 
 - `walks`: List of Great Walks to track
   - `name`: Walk name
-  - `placeId`: DOC system ID (see DISCOVER_PLACEIDS.md)
+  - `placeId`: DOC system ID
   - `enabled`: Set to `true` to track
 - `scraping`:
   - `days_ahead`: How many days ahead to check (default: 365)
   - `nights_per_request`: Nights to request per API call (default: 30)
+  - `max_workers_per_walk`: Parallel workers per walk (default: 5)
+  - `max_parallel_walks`: Number of walks to process concurrently (default: 3)
   - `schedule_utc`: When to run (GitHub Actions cron schedule)
 
 ## 📈 Analysis Ideas
@@ -130,12 +132,12 @@ The DOC booking system uses Tyler Technologies' Recreation Management platform:
 - **Payload**: `{placeId, arrivalDate, nights}`
 - **Response**: Nested JSON with facility and date data
 
-### Rate Limiting
+### Performance
 
-The scraper:
-- Waits 1 second between requests for the same walk
-- Waits 2 seconds between different walks
-- Total runtime: ~5-10 minutes for all walks (full year)
+The scraper uses parallel processing for efficient data collection:
+- Processes multiple walks concurrently (default: 3 walks at a time)
+- Makes parallel API requests for each walk (default: 5 workers per walk)
+- Total runtime: ~30-60 seconds for all 10 walks (full year)
 
 ### GitHub Actions
 
@@ -146,18 +148,17 @@ The scraper:
 
 ## 📚 Files
 
-- `scraper.py` - Main scraping script
+- `scraper.py` - Main scraping script (with parallel processing)
 - `config/walks.json` - Walk configuration
 - `requirements.txt` - Python dependencies
-- `DISCOVER_PLACEIDS.md` - Guide to finding placeIds
 - `.github/workflows/scrape.yml` - GitHub Actions workflow
 - `data/` - Scraped data (git-tracked)
 
 ## 🤝 Contributing
 
-To add more walks:
-1. Find the placeId (see DISCOVER_PLACEIDS.md)
-2. Add to config/walks.json with `enabled: true`
+All 10 Great Walks are already configured in `config/walks.json`. To enable/disable walks:
+1. Edit `config/walks.json`
+2. Set `enabled: true` or `enabled: false` for each walk
 3. Commit and push
 
 ## 📄 License
@@ -166,4 +167,4 @@ Data is sourced from DOC's public booking system. Please use responsibly and don
 
 ---
 
-**Status**: Currently tracking Heaphy Track. Additional walks need placeIds discovered.
+**Status**: All 10 Great Walks are configured and ready to track.
