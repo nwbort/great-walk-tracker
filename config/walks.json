@@ -1,0 +1,60 @@
+{
+  "walks": [
+    {
+      "name": "Heaphy Track",
+      "placeId": 876,
+      "enabled": true
+    },
+    {
+      "name": "Milford Track",
+      "placeId": 873,
+      "enabled": true
+    },
+    {
+      "name": "Routeburn Track",
+      "placeId": 874,
+      "enabled": true
+    },
+    {
+      "name": "Kepler Track",
+      "placeId": 872,
+      "enabled": true
+    },
+    {
+      "name": "Abel Tasman Coast Track",
+      "placeId": 875,
+      "enabled": true
+    },
+    {
+      "name": "Tongariro Northern Circuit",
+      "placeId": 879,
+      "enabled": true
+    },
+    {
+      "name": "Lake Waikaremoana Track",
+      "placeId": 878,
+      "enabled": true
+    },
+    {
+      "name": "Whanganui Journey",
+      "placeId": 881,
+      "enabled": true
+    },
+    {
+      "name": "Rakiura Track",
+      "placeId": 877,
+      "enabled": true
+    },
+    {
+      "name": "Paparoa Track",
+      "placeId": 880,
+      "enabled": true
+    }
+  ],
+  "scraping": {
+    "days_ahead": 365,
+    "nights_per_request": 30,
+    "schedule_utc": "00:00",
+    "schedule_description": "Midnight UTC = Noon NZDT"
+  }
+}
