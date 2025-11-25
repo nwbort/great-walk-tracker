@@ -20,17 +20,22 @@ API_URL = "https://prod-nz-rdr.recreation-management.tylerapp.com/nzrdr/rdr/sear
 CONFIG_FILE = "config/walks.json"
 DATA_DIR = "data"
 
-# Headers matching the R code
+# Headers matching the R code exactly
 HEADERS = {
     "accept": "application/json",
     "accept-language": "en,en-AU;q=0.9,en-NZ;q=0.8,en-GB;q=0.7,en-US;q=0.6",
     "content-type": "application/json",
+    "dnt": "1",
     "origin": "https://bookings.doc.govt.nz",
+    "priority": "u=1, i",
     "referer": "https://bookings.doc.govt.nz/",
-    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+    "sec-ch-ua": '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"',
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": '"Windows"',
     "sec-fetch-dest": "empty",
     "sec-fetch-mode": "cors",
-    "sec-fetch-site": "cross-site"
+    "sec-fetch-site": "cross-site",
+    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
 }
 
 
@@ -56,6 +61,13 @@ def scrape_walk_availability(place_id: int, walk_name: str, arrival_date: str, n
 
     try:
         response = requests.post(API_URL, headers=HEADERS, json=payload, timeout=30)
+
+        # Handle specific error codes
+        if response.status_code == 403:
+            print(f"  ⚠ Access denied (403) - API may be blocking automated requests")
+            print(f"    This often happens when running from cloud/data center IPs")
+            return []
+
         response.raise_for_status()
 
         data = response.json()

@@ -7,57 +7,48 @@
     },
     {
       "name": "Milford Track",
-      "placeId": null,
-      "enabled": false,
-      "note": "placeId to be discovered"
+      "placeId": 873,
+      "enabled": true
     },
     {
       "name": "Routeburn Track",
-      "placeId": null,
-      "enabled": false,
-      "note": "placeId to be discovered"
+      "placeId": 874,
+      "enabled": true
     },
     {
       "name": "Kepler Track",
-      "placeId": null,
-      "enabled": false,
-      "note": "placeId to be discovered"
+      "placeId": 872,
+      "enabled": true
     },
     {
       "name": "Abel Tasman Coast Track",
-      "placeId": null,
-      "enabled": false,
-      "note": "placeId to be discovered"
+      "placeId": 875,
+      "enabled": true
     },
     {
       "name": "Tongariro Northern Circuit",
-      "placeId": null,
-      "enabled": false,
-      "note": "placeId to be discovered"
+      "placeId": 879,
+      "enabled": true
     },
     {
       "name": "Lake Waikaremoana Track",
-      "placeId": null,
-      "enabled": false,
-      "note": "placeId to be discovered"
+      "placeId": 878,
+      "enabled": true
     },
     {
       "name": "Whanganui Journey",
-      "placeId": null,
-      "enabled": false,
-      "note": "placeId to be discovered"
+      "placeId": 881,
+      "enabled": true
     },
     {
       "name": "Rakiura Track",
-      "placeId": null,
-      "enabled": false,
-      "note": "placeId to be discovered"
+      "placeId": 877,
+      "enabled": true
     },
     {
       "name": "Paparoa Track",
-      "placeId": null,
-      "enabled": false,
-      "note": "placeId to be discovered"
+      "placeId": 880,
+      "enabled": true
     }
   ],
   "scraping": {
