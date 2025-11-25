@@ -54,6 +54,8 @@
   "scraping": {
     "days_ahead": 365,
     "nights_per_request": 30,
+    "max_workers_per_walk": 5,
+    "max_parallel_walks": 3,
     "schedule_utc": "00:00",
     "schedule_description": "Midnight UTC = Noon NZDT"
   }
