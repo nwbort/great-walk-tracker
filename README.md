@@ -21,22 +21,19 @@ data/
 ```
 
 Each CSV contains:
-- `check_timestamp`: When we scraped the data
-- `walk_name`: Name of the Great Walk
 - `place_id`: DOC system ID for the walk
-- `facility_name`: Hut or campsite name
 - `facility_id`: DOC system ID for the facility
 - `target_date`: The date being booked
-- `total_capacity`: Total beds/sites
 - `total_available`: Available beds/sites
-- `booking_status`: Status (e.g., "Available", "Fully Booked")
-- `price`: Price in NZD
+
+**Note**: The scrape timestamp can be derived from the filename (e.g., `2025-11-25-0412.csv` = scraped at 2025-11-25 04:12 UTC). Walk and facility names can be looked up via `place_id`/`facility_id` in `config/walks.json` and `config/facilities.json`.
 
 ### Why This Structure?
 
 - **Git-friendly**: New file per scrape = no merge conflicts
 - **Query-friendly**: Easy to grep/filter by any dimension
 - **Compresses well**: CSV compresses efficiently in git
+- **Space-efficient**: Minimized columns (timestamp in filename saves ~46% space)
 - **Simple**: Any tool can read CSV (Python, R, Excel, etc.)
 
 ## 🚀 Setup
