@@ -203,7 +203,7 @@ def save_scrape_results(records: List[Dict[str, Any]], check_timestamp: datetime
     Save scrape results to a CSV file.
 
     File structure: data/YYYY/MM/YYYY-MM-DD-HHMM.csv
-    Optimized format: only essential columns, timestamps rounded to seconds.
+    Optimized format: only essential columns (timestamp can be derived from filename).
     """
     if not records:
         print("No records to save")
@@ -217,14 +217,9 @@ def save_scrape_results(records: List[Dict[str, Any]], check_timestamp: datetime
     # Create filename with timestamp
     filename = month_dir / f"{check_timestamp.strftime('%Y-%m-%d-%H%M')}.csv"
 
-    # Round timestamp to seconds (remove microseconds) and add to each record
-    timestamp_str = check_timestamp.replace(microsecond=0).isoformat()
-    for record in records:
-        record["check_timestamp"] = timestamp_str
-
     # Optimized CSV structure - only essential fields
+    # Note: check_timestamp can be derived from the filename
     fieldnames = [
-        "check_timestamp",
         "place_id",
         "facility_id",
         "target_date",
