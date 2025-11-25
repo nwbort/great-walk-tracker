@@ -1,0 +1,69 @@
+{
+  "walks": [
+    {
+      "name": "Heaphy Track",
+      "placeId": 876,
+      "enabled": true
+    },
+    {
+      "name": "Milford Track",
+      "placeId": null,
+      "enabled": false,
+      "note": "placeId to be discovered"
+    },
+    {
+      "name": "Routeburn Track",
+      "placeId": null,
+      "enabled": false,
+      "note": "placeId to be discovered"
+    },
+    {
+      "name": "Kepler Track",
+      "placeId": null,
+      "enabled": false,
+      "note": "placeId to be discovered"
+    },
+    {
+      "name": "Abel Tasman Coast Track",
+      "placeId": null,
+      "enabled": false,
+      "note": "placeId to be discovered"
+    },
+    {
+      "name": "Tongariro Northern Circuit",
+      "placeId": null,
+      "enabled": false,
+      "note": "placeId to be discovered"
+    },
+    {
+      "name": "Lake Waikaremoana Track",
+      "placeId": null,
+      "enabled": false,
+      "note": "placeId to be discovered"
+    },
+    {
+      "name": "Whanganui Journey",
+      "placeId": null,
+      "enabled": false,
+      "note": "placeId to be discovered"
+    },
+    {
+      "name": "Rakiura Track",
+      "placeId": null,
+      "enabled": false,
+      "note": "placeId to be discovered"
+    },
+    {
+      "name": "Paparoa Track",
+      "placeId": null,
+      "enabled": false,
+      "note": "placeId to be discovered"
+    }
+  ],
+  "scraping": {
+    "days_ahead": 365,
+    "nights_per_request": 30,
+    "schedule_utc": "00:00",
+    "schedule_description": "Midnight UTC = Noon NZDT"
+  }
+}
