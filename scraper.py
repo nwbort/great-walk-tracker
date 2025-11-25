@@ -56,11 +56,12 @@ def load_config() -> Dict[str, Any]:
         return json.load(f)
 
 
-def scrape_walk_availability(place_id: int, walk_name: str, arrival_date: str, nights: int, request_num: int = None, total_requests: int = None) -> List[Dict[str, Any]]:
+def scrape_walk_availability(place_id: int, walk_name: str, arrival_date: str, nights: int, request_num: int = None, total_requests: int = None, facility_map: Dict[int, str] = None) -> List[Dict[str, Any]]:
     """
     Scrape availability for a specific walk, arrival date, and duration.
 
     Returns a list of facility availability records.
+    Updates facility_map with facility_id -> facility_name mappings.
     """
     progress_str = f"[{request_num}/{total_requests}] " if request_num and total_requests else ""
 
@@ -101,20 +102,25 @@ def scrape_walk_availability(place_id: int, walk_name: str, arrival_date: str, n
             facility_name = facility.get("FacilityName", "Unknown")
             facility_id = facility.get("FacilityId", None)
 
+            # Update facility mapping
+            if facility_map is not None and facility_id is not None:
+                facility_map[facility_id] = facility_name
+
             # Process each date within this facility's data
             date_data = facility.get("GreatWalkFacilityDateData", [])
 
             for date_entry in date_data:
+                # Optimized record structure - only store IDs and essential data
+                target_date = date_entry.get("ArrivalDate", "")
+                # Remove timestamp portion from date (e.g., "2026-02-23T00:00:00" -> "2026-02-23")
+                if "T" in target_date:
+                    target_date = target_date.split("T")[0]
+
                 record = {
-                    "walk_name": walk_name,
                     "place_id": place_id,
-                    "facility_name": facility_name,
                     "facility_id": facility_id,
-                    "target_date": date_entry.get("ArrivalDate", ""),
-                    "total_capacity": date_entry.get("TotalCapacity", 0),
+                    "target_date": target_date,
                     "total_available": date_entry.get("TotalAvailable", 0),
-                    "booking_status": date_entry.get("BookingStatus", ""),
-                    "price": date_entry.get("Price", 0.0),
                 }
                 records.append(record)
 
@@ -127,12 +133,13 @@ def scrape_walk_availability(place_id: int, walk_name: str, arrival_date: str, n
         return []
 
 
-def scrape_walk_full_year(place_id: int, walk_name: str, days_ahead: int, nights_per_request: int, max_workers: int = 5) -> List[Dict[str, Any]]:
+def scrape_walk_full_year(place_id: int, walk_name: str, days_ahead: int, nights_per_request: int, max_workers: int = 5, facility_map: Dict[int, str] = None) -> List[Dict[str, Any]]:
     """
     Scrape availability for a walk for the specified number of days ahead.
 
     Since the API returns data for a range of nights, we make multiple requests
     to cover the full year ahead. Uses parallel processing for faster scraping.
+    Updates facility_map with facility_id -> facility_name mappings.
     """
     all_records = []
     current_date = datetime.now()
@@ -166,7 +173,8 @@ def scrape_walk_full_year(place_id: int, walk_name: str, days_ahead: int, nights
                 arrival_date_str,
                 nights_per_request,
                 request_num,
-                requests_needed
+                requests_needed,
+                facility_map
             ): (request_num, arrival_date_str)
             for request_num, arrival_date_str in requests
         }
@@ -195,6 +203,7 @@ def save_scrape_results(records: List[Dict[str, Any]], check_timestamp: datetime
     Save scrape results to a CSV file.
 
     File structure: data/YYYY/MM/YYYY-MM-DD-HHMM.csv
+    Optimized format: only essential columns, timestamps rounded to seconds.
     """
     if not records:
         print("No records to save")
@@ -208,22 +217,18 @@ def save_scrape_results(records: List[Dict[str, Any]], check_timestamp: datetime
     # Create filename with timestamp
     filename = month_dir / f"{check_timestamp.strftime('%Y-%m-%d-%H%M')}.csv"
 
-    # Add check timestamp to each record
+    # Round timestamp to seconds (remove microseconds) and add to each record
+    timestamp_str = check_timestamp.replace(microsecond=0).isoformat()
     for record in records:
-        record["check_timestamp"] = check_timestamp.isoformat()
+        record["check_timestamp"] = timestamp_str
 
-    # Write CSV
+    # Optimized CSV structure - only essential fields
     fieldnames = [
         "check_timestamp",
-        "walk_name",
         "place_id",
-        "facility_name",
         "facility_id",
         "target_date",
-        "total_capacity",
-        "total_available",
-        "booking_status",
-        "price"
+        "total_available"
     ]
 
     with open(filename, 'w', newline='', encoding='utf-8') as f:
@@ -233,6 +238,32 @@ def save_scrape_results(records: List[Dict[str, Any]], check_timestamp: datetime
 
     print(f"\n✓ Saved {len(records)} records to {filename}")
     return filename
+
+
+def save_facility_mapping(facility_map: Dict[int, str]):
+    """
+    Save facility ID to name mapping.
+    This mapping allows reconstruction of facility names from IDs in the CSV data.
+    """
+    if not facility_map:
+        print("No facility mapping to save")
+        return
+
+    mapping_file = Path(CONFIG_FILE).parent / "facilities.json"
+
+    # Convert keys to strings for JSON serialization
+    facility_data = {
+        "facilities": [
+            {"facility_id": fid, "facility_name": fname}
+            for fid, fname in sorted(facility_map.items())
+        ],
+        "last_updated": datetime.now().replace(microsecond=0).isoformat()
+    }
+
+    with open(mapping_file, 'w', encoding='utf-8') as f:
+        json.dump(facility_data, f, indent=2, ensure_ascii=False)
+
+    print(f"✓ Saved {len(facility_map)} facility mappings to {mapping_file}")
 
 
 def main():
@@ -278,6 +309,9 @@ def main():
     check_timestamp = datetime.now()
     print(f"\n🕐 Check timestamp: {check_timestamp.isoformat()}")
 
+    # Create shared facility mapping dictionary (thread-safe with dict)
+    facility_map = {}
+
     # Scrape walks in parallel
     print(f"\n🚀 Starting parallel scraping with {max_parallel_walks} concurrent walks...")
     print("="*70)
@@ -293,7 +327,8 @@ def main():
                 walk["name"],
                 days_ahead,
                 nights_per_request,
-                max_workers_per_walk
+                max_workers_per_walk,
+                facility_map
             ): walk["name"]
             for walk in enabled_walks
         }
@@ -319,6 +354,7 @@ def main():
     print("="*70)
     print(f"\n⏱️  Total time: {overall_time:.2f}s ({overall_time/60:.2f} minutes)")
     print(f"📊 Total records collected: {len(all_records)}")
+    print(f"🏠 Unique facilities found: {len(facility_map)}")
     print(f"\n📝 Records by walk:")
     for walk_name, count in walk_results.items():
         print(f"   • {walk_name}: {count} records")
@@ -327,6 +363,7 @@ def main():
     if all_records:
         print(f"\n💾 Saving results...")
         save_scrape_results(all_records, check_timestamp)
+        save_facility_mapping(facility_map)
         print(f"\n✅ SCRAPING COMPLETE!")
     else:
         print("\n⚠️  WARNING: No data collected")
